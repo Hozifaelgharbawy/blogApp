@@ -1,6 +1,6 @@
 let app = require("express").Router();
-let blogController = require("../controller/blog.controller");
-let checkToken = require("../helpers/token.auth").verifyToken
+let blogController = require("../../controller/blog.controller");
+let checkToken = require("../../helpers/token.auth").verifyToken
 
 app.post("/addBlog", blogController.addBlog);
 app.delete("/deleteBlog/:blogId/:userId", blogController.deleteBlog);

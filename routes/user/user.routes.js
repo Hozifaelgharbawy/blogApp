@@ -1,8 +1,8 @@
 let app = require("express").Router();
-let userController = require("../controller/user.controller");
-let { confirmPasswordValidation, addUserValidation } = require("../validation/user.validation");
-let validator = require("../helpers/common.validate");
-let { checkSession } = require("../utils/checkSession.util")
+let userController = require("../../controller/user.controller");
+let { confirmPasswordValidation, addUserValidation } = require("../../validation/user.validation");
+let validator = require("../../helpers/common.validate");
+let { checkSession } = require("../../utils/checkSession.util")
 
 
 app.post("/register", userController.register);

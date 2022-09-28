@@ -1,4 +1,5 @@
-let User = require("../model/user.model");
+let User = require("..//modules/user/user.model");
+let userRepo = require("../modules/user/user.repo");
 let bcrypt = require("bcrypt");
 const { generateToken } = require("../helpers/token.auth");
 const { sendEmail } = require("../utils/email.util")
@@ -7,17 +8,22 @@ let day = 3600000 * 24;
 
 
 exports.register = async (req, res) => {
-    const user = new User(req.body);
-    await user.save();
-    let randomActivationCode = Math.floor(Math.random() * 10000000);
-    req.session.activationCode = randomActivationCode;
-    req.session.user = user;
-    await req.session.save()
-    let subject = "Activate Account!";
-    let text = "You have created a new account, please click the link to activate your account"
-    let html = `<a>http://localhost:3000/activateUser/${randomActivationCode}</a>`
-    await sendEmail(user.email, subject, text, html)
-    res.status(200).send({ message: "Success" });
+    const user = await userRepo.create(req.body)
+    if (user.success) {
+        let randomActivationCode = Math.floor(Math.random() * 10000000);
+        req.session.activationCode = randomActivationCode;
+        req.session.user = user.record;
+        await req.session.save()
+        let subject = "Activate Account!";
+        let text = "You have created a new account, please click the link to activate your account"
+        let html = `<a>http://localhost:3000/activateUser/${randomActivationCode}</a>`
+        await sendEmail(user.record.email, subject, text, html)
+        res.status(user.code).json(user);
+    }
+    else {
+        res.status(user.code).json(user);
+    }
+
 }
 
 
@@ -79,27 +85,36 @@ exports.checkRecoveryCode = async (req, res) => {
 
 
 exports.getAllUsers = async (req, res) => {
-    let allUsers = await User.find({}).select("-password");
-    res.status(200).send({ message: "Success", allUsers });
+    let result = await userRepo.list();
+    res.status(result.code).json(result);
 }
 
 
 exports.getUserById = async (req, res) => {
-    let user = await User.find({ _id: req.params.id }).select("-password");
-    res.status(200).send({ message: "Success", user: user[0] });
+    let result = await userRepo.get(req.params.id);
+    if (result.success) {
+        res.status(result.code).json(result);
+    }
+    else {
+        res.status(result.code).json(result);
+    }
 }
 
 
 exports.deleteUser = async (req, res) => {
-    let user = await User.deleteOne({ _id: req.params.id });
-    res.status(200).send({ message: "Success", user: user.acknowledged });
+    let result = await userRepo.remove(req.params.id);
+    if (result.success) {
+        res.status(result.code).json(result);
+    }
+    else {
+        res.status(result.code).json(result);
+    }
 }
 
 
 exports.updateUser = async (req, res) => {
-    const { firstName, lastName, email, password } = req.body;
-    await User.findByIdAndUpdate({ _id: req.params.id }, { firstName, lastName, email, password });
-    res.status(200).send({ message: "Success" });
+    let result = await userRepo.update(req.params.id, req.body);
+    res.status(result.code).json(result);
 }
 
 
