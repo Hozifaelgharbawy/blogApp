@@ -42,19 +42,23 @@ exports.login = async (req, res) => {
     let user = await User.findOne({ email });
     if (user) {
         var match = await bcrypt.compare(password, user.password);
+
+        //if (user.isActive == false) return res.status(403).json({ message: "Please Check your email for activation link!" })
+
+        if (match) {
+            // req.session.cookie.expires = new Date(Date.now() + day);
+            // const userToken = generateToken({ user })
+            // req.session.user = user;
+            // req.session.token = userToken;
+            // req.session.save();
+            res.status(201).send({ code: 201, message: "Success" });
+
+        } else {
+            res.status(400).send({code:400, message: "Incorrect password" });
+        }
     }
-    if (user.isActive == false) return res.status(403).json({ message: "Please Check your email for activation link!" })
-
-    if (match) {
-        req.session.cookie.expires = new Date(Date.now() + day);
-        const userToken = generateToken({ user })
-        req.session.user = user;
-        req.session.token = userToken;
-        req.session.save();
-        res.status(201).send({ message: "Success", session: req.session });
-
-    } else {
-        res.status(400).send({ message: "Incorrect password" });
+    else {
+        res.status(404).send({ code: 404, message: "user not found" });
     }
 }
 

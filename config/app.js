@@ -3,20 +3,19 @@ const app = express();
 const cors = require("cors");
 const { handleCorsPolicy } = require("../helpers/cors")
 require('dotenv').config();
-let sessionAuth = require("../helpers/session.auth")
+//let sessionAuth = require("../helpers/session.auth")
 
 let indexRoutes = require("../routes/index.routes");
 
 app.use(express.json());
-let connection = require("./database");
+let connection = require("./database").connection;
 connection();
 
 
 app.use(cors())
 app.use(handleCorsPolicy)
-app.use(sessionAuth)
+//app.use(sessionAuth)
 app.use(indexRoutes);
 
 
-app.listen(process.env.PORT, () => { console.log(`Server is up and running on port ${process.env.PORT}`); })
-
+module.exports = app

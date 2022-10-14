@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.j"
+    "test": "jest ./test --detectOpenHandles",
+    "start": "nodemon ./config/server.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,10 @@
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.10",
-    "nodemailer": "^6.7.5"
+    "nodemailer": "^6.7.5",
+    "supertest": "^6.3.0"
+  },
+  "devDependencies": {
+    "jest": "^29.1.2"
   }
 }

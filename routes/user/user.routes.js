@@ -14,7 +14,7 @@ app.post("/generateRecoveryCode", userController.generateRecoveryCode)
 app.post("/checkRecoveryCode", userController.checkRecoveryCode)
 
 
-app.get("/getAllUsers", checkSession, userController.getAllUsers);
+app.get("/getAllUsers", userController.getAllUsers);
 app.get("/getUserById/:id", checkSession,userController.getUserById);
 app.put("/updateUser/:id", userController.updateUser);
 app.delete("/deleteUser/:id", userController.deleteUser);

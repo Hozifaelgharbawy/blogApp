@@ -12,4 +12,13 @@ let connection = () => {
     });
 }
 
-module.exports = connection;
+module.exports = {
+    connection,
+    connect: () => {
+        mongoose.Promise = Promise;
+        mongoose.connect(process.env.CONNECTION_STRING)
+    },
+    disconnect: done => {
+        mongoose.disconnect(done)
+    }
+};
