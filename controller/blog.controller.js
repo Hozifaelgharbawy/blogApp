@@ -4,7 +4,6 @@ let User = require("../modules/user/user.model");
 
 exports.addBlog = async (req, res) => {
     const result = await blogRepo.create(req.body)
-    await User.findByIdAndUpdate({ _id: req.params.userId }, { $push: { userBlogs: blog._id } });
     res.status(result.code).json(result);
 }
 

@@ -79,3 +79,7 @@ module.exports = {
         })
     }
 }
+
+
+// MY_USER = test12245533@gmail.com
+// MY_PASS = lpjklwfcxvzpwzmh

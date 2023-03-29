@@ -13,6 +13,7 @@ let userSchema = mongoose.Schema({
         type: Boolean,
         default: false
     },
+    image: { type: Object },
     favTeams: [String],
     userBlogs: [{
         type: mongoose.Types.ObjectId,

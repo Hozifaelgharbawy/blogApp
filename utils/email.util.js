@@ -2,18 +2,27 @@ const nodeMailer = require("nodemailer")
 
 exports.sendEmail = async (receiver, subject, text, html) => {
     
-    let transporter = nodeMailer.createTransport({
-        // host: "smtp.ethereal.email",
-        service: 'gmail',
-        port: 587,
-        secure: false, // true for 465, false for other ports
-        auth: {
-            user: process.env.MY_USER,
-            pass: process.env.MY_PASS,
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
+    // let transporter = nodeMailer.createTransport({
+    //     // host: "smtp.ethereal.email",
+    //     service: 'gmail',
+    //     port: 587,
+    //     secure: false, // true for 465, false for other ports
+    //     auth: {
+    //         user: process.env.MY_USER,
+    //         pass: process.env.MY_PASS,
+    //     },
+    //     tls: {
+    //         rejectUnauthorized: false
+    //     }
+    // });
+
+    var transporter = nodeMailer.createTransport({
+      host: "sandbox.smtp.mailtrap.io",
+      port: 587 ,
+      auth: {
+        user: "3302e64b351f0b",
+        pass: "59419c7ac2ea3f"
+      }
     });
 
     // send mail with defined transport object

@@ -1,0 +1,18 @@
+١٦‏/١٠‏/٢٠٢٢, ٦:٤٩:٤٩ م |  INFO | return all users | data [{"_id":"6335947a51477f920743d76c","email":"hameca7493@weepm.com","userName":"sherk23","age":16,"isActive":false,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0},{"_id":"6335950782fc8625b8dc2e7a","email":"dsg@weepm.com","userName":"sherk23","age":16,"isActive":false,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0},{"_id":"63359afc73a0fd40aeaf0c20","email":"siwiy50569@ishyp.com","userName":"sherk23","age":16,"isActive":true,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0}] | 
+١٦‏/١٠‏/٢٠٢٢, ٦:٥٠:٣٥ م |  INFO | return all users | data [{"_id":"6335947a51477f920743d76c","email":"hameca7493@weepm.com","userName":"sherk23","age":16,"isActive":false,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0},{"_id":"6335950782fc8625b8dc2e7a","email":"dsg@weepm.com","userName":"sherk23","age":16,"isActive":false,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0},{"_id":"63359afc73a0fd40aeaf0c20","email":"siwiy50569@ishyp.com","userName":"sherk23","age":16,"isActive":true,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0}] | 
+١٦‏/١٠‏/٢٠٢٢, ٧:٠٠:٢٠ م |  INFO | return all users | data [{"_id":"6335947a51477f920743d76c","email":"hameca7493@weepm.com","userName":"sherk23","age":16,"isActive":false,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0},{"_id":"6335950782fc8625b8dc2e7a","email":"dsg@weepm.com","userName":"sherk23","age":16,"isActive":false,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0},{"_id":"63359afc73a0fd40aeaf0c20","email":"siwiy50569@ishyp.com","userName":"sherk23","age":16,"isActive":true,"favTeams":["lice","fdfg"],"userBlogs":[],"__v":0}] | 
+
+10/16/2022, 11:29:26 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+2022-10-16T22:34:29.852Z |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+10/17/2022, 12:34:56 AM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/1/2022, 6:05:16 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/1/2022, 6:06:38 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/1/2022, 6:06:48 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/1/2022, 6:08:18 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/1/2022, 6:09:18 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/1/2022, 6:10:26 PM |  INFO | {"auditAction":"/getAllUsers","auditStatus":200} | 
+12/5/2022, 3:42:21 PM |  INFO | {"Action":"/getAllUsers","Status":200} | 
+12/5/2022, 3:44:41 PM |  INFO | return All Users | data "{\"Action\":\"/getAllUsers\",\"Status\":200}" | 
+12/5/2022, 3:45:04 PM |  INFO | return All Users | data {"Action":"/getAllUsers","Status":200} | 
+12/9/2022, 3:11:48 PM |  INFO | return All Users | 
+12/9/2022, 3:40:42 PM |  INFO | return All Users | 

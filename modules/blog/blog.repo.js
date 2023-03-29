@@ -53,7 +53,7 @@ exports.get = async (id) => {
 
 exports.create = async (form) => {
   const newBlog = new Blog(form);
-  await newv.save();
+  await newBlog.save();
   return {
     success: true,
     record: newBlog,

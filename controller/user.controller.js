@@ -3,8 +3,16 @@ let userRepo = require("../modules/user/user.repo");
 let bcrypt = require("bcrypt");
 const { generateToken } = require("../helpers/token.auth");
 const { sendEmail } = require("../utils/email.util")
+const LoggingService = require("../services/logger.service")
+const adminLogger = new LoggingService("admin", "admin.controller")
+const auditAction = require("../audit/auditAction")
+const auditService = require("../audit/audit.service")
 
 let day = 3600000 * 24;
+
+const dateFormat = () => {
+    return new Date(Date.now()).toLocaleString();
+  }
 
 
 exports.register = async (req, res) => {
@@ -69,7 +77,7 @@ exports.generateRecoveryCode = async (req, res) => {
         let randomVerficationCode = Math.floor(Math.random() * 10000000);
         let subject = "Reset Password";
         let text = "You forgot your Password here is your recovery code"
-        let html = `<b>${randomVerficationCode}</b>`
+        let html = `<h1>${randomVerficationCode}</h1>`
         await sendEmail(user.email, subject, text, html)
         req.session.recoveryCode = randomVerficationCode;
         await req.session.save()
@@ -90,6 +98,9 @@ exports.checkRecoveryCode = async (req, res) => {
 
 exports.getAllUsers = async (req, res) => {
     let result = await userRepo.list();
+    let info = { Action: req.originalUrl, Status: result.code }
+    adminLogger.info("return All Users");
+    auditService.prepareAudit(auditAction.actionList.GET_ALL_USERS, result.records, null, "user", dateFormat())
     res.status(result.code).json(result);
 }
 

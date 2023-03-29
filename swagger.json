@@ -1,0 +1,183 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "BlogApp API",
+    "description": "BlogApp API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "BlogApp",
+      "description": "BlogApp API"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/getAllBlogs": {
+      "get": {
+        "description": "return All Blogs",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A List Of Blogs",
+            "schemes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/getAllBlogs"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getAllUsers": {
+      "get": {
+        "description": "return All Users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "A List Of Users",
+            "schemes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/getAllUsers"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addBlog": {
+      "post": {
+        "description": "addBlog",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "user",
+            "schema": {
+              "type": "Object",
+              "properties": {
+                "title": {
+                  "type":"String",
+                  "example": "blog"
+                },
+                "description": {
+                  "type":"String",
+                  "example": "New Blog"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "add blog",
+            "schemes": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/addBlog"
+              }
+            }
+          }
+        }
+      }
+    }
+
+  },
+  "definitions": {
+    "blog": {
+      "required": [
+        "_id",
+        "title",
+        "description"
+      ],
+      "properties": {
+        "_id": {
+          "type": "String"
+        },
+        "title": {
+          "type": "String"
+        },
+        "description": {
+          "type": "String"
+        }
+      }
+    },
+    "getAllBlogs": {
+      "$ref": "#/definitions/blog"
+    },
+    "user": {
+      "required": [
+        "_id",
+        "firstName",
+        "lastName",
+        "password",
+        "email",
+        "userName",
+        "age",
+        "isActive"
+      ],
+      "properties": {
+        "_id": {
+          "type": "String"
+        },
+        "firstName": {
+          "type": "String"
+        },
+        "lastName": {
+          "type": "String"
+        },
+        "password": {
+          "type": "String"
+        },
+        "email": {
+          "type": "String"
+        },
+        "userName": {
+          "type": "String"
+        },
+        "age": {
+          "type": "Number"
+        },
+        "isActive": {
+          "type": "Boolean"
+        },
+        "image": {
+          "type": "Object"
+        },
+        "favTeams": {
+          "type": "String"
+        },
+        "userBlogs": [
+          {
+            "type": "String"
+          }
+        ]
+      }
+    },
+    "getAllUsers": {
+      "$ref": "#/definitions/user"
+    },
+    "addBlog": {
+      "$ref": "#/definitions/blog"
+    }
+
+  }
+}
